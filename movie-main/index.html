@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爆肝影廳 | Deadline Studios</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: "Segoe UI", sans-serif;
+            background: #f5efe6;
+            /* 奶茶色背景 */
+            color: #3e2f2f;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 10px;
+            background: rgba(62, 47, 47, 0.9);
+            /* 深咖啡 */
+            position: fixed;
+            width: 100%;
+            color: #fff;
+        }
+
+        header h2 {
+            margin: 0;
+            margin-bottom: 6px; /* 減少爆肝影廳下方距離 */
+        }
+
+        nav a {
+            margin: 0 15px;
+            color: #e6d5c3;
+            text-decoration: none;
+        }
+
+        /* 國賓影城右側多一點距離 */
+        nav a.nav-ambassador {
+            margin-right: 30px;
+        }
+
+        nav a:hover {
+            color: #d2a679;
+            /* 焦糖色 */
+        }
+
+        /* Hero */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(to right, #c8b6a6, #a47148);
+            display: flex;
+            align-items: center;
+            padding-left: 80px;
+        }
+
+        .hero h1 {
+            font-size: 60px;
+            color: #2c1f1f;
+        }
+
+        .hero button {
+            margin-top: 20px;
+            padding: 12px 25px;
+            background: #6f4e37;
+            /* 咖啡主色 */
+            border: none;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .hero button:hover {
+            background: #5a3e2b;
+        }
+
+        /* Section */
+        .section {
+            padding: 60px;
+        }
+
+        /* 卡片 */
+        .cards {
+            display: flex;
+            gap: 20px;
+        }
+
+        .card {
+            background: #fffaf5;
+            border-radius: 12px;
+            overflow: hidden;
+            width: 200px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            transition: 0.3s;
+        }
+
+        .card img {
+            width: 100%;
+        }
+
+        .card p {
+            padding: 10px;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+        }
+
+        /* Footer */
+        .footer {
+            background: #3e2f2f;
+            padding: 40px;
+            text-align: center;
+            color: #e6d5c3;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h2>🎬 爆肝影廳</h2>
+        <nav>
+            <a href="index.html">首頁</a>
+            <a href="環球影城.html">環球影城</a>
+            <a href="威秀影城.html">威秀影城</a>
+            <a href="秀泰影城.html">秀泰影城</a>
+            <a href="國賓影城.html" class="nav-ambassador">國賓影城</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div>
+            <h1>光影造夢者</h1>
+            <p>WE MAKE MOVIES. WE CREATE DREAMS.</p>
+            <button>探索更多</button>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>🔥 人氣推薦</h2>
+        <div class="cards">
+            <div class="card">
+                <img src="movie1.jpg">
+                <p>超級瑪利歐銀河電影版</p>
+            </div>
+            <div class="card">
+                <img src="movie2.jpg">
+                <p>穿著Prada的惡魔2</p>
+            </div>
+            <div class="card">
+                <img src="movie3.jpg">
+                <p>動物農莊</p>
+            </div>
+            <div class="card">
+                <img src="movie4.jpg">
+                <p>ONE OK ROCK DETOX JAPAN TOUR 2025 AT NISSAN STADIUM IN CINEMAS 應援場</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>🎥 關於我們</h2>
+        <p>人生不會一直贏，但我們熱愛電影。</p>
+    </section>
+
+    <section class="section">
+        <h2>🎭 類型分類</h2>
+        <div class="cards">
+            <div class="card">
+                <p>動作</p>
+            </div>
+            <div class="card">
+                <p>科幻</p>
+            </div>
+            <div class="card">
+                <p>愛情</p>
+            </div>
+            <div class="card">
+                <p>懸疑</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="footer">
+        © 2026 爆肝影廳 Deadline Studios
+    </div>
+
+</body>
+
+</html>

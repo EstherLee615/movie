@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>電影選單 | 爆肝影廳</title>
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Segoe UI", sans-serif;
+            background: #f5efe6;
+            color: #3e2f2f;
+            padding-top: 88px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            padding: 2px 24px;
+            background: rgba(62, 47, 47, 0.98);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            color: #fff;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 18px;
+        }
+
+        nav a {
+            color: #e6d5c3;
+            text-decoration: none;
+            white-space: nowrap;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: #d2a679;
+        }
+
+        .filter-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            align-items: center;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto 20px;
+        }
+
+        .filter-bar input,
+        .filter-bar select,
+        .filter-bar button {
+            padding: 12px 14px;
+            border-radius: 10px;
+            border: 1px solid #d7c2b4;
+            background: #fffaf5;
+            color: #3e2f2f;
+            font-size: 16px;
+        }
+
+        .filter-bar input {
+            flex: 1 1 300px;
+            min-width: 220px;
+        }
+
+        .filter-bar select {
+            flex: 0 0 180px;
+        }
+
+        .filter-bar button {
+            flex: 0 0 auto;
+        }
+
+        .filter-bar button {
+            cursor: pointer;
+            border: none;
+            background: #6f4e37;
+            color: white;
+        }
+
+        .filter-bar button:hover {
+            background: #5a3e2b;
+        }
+
+        .movie-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            padding: 0 20px 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .no-results {
+            padding: 40px 20px;
+            margin: 20px auto 40px;
+            max-width: 1200px;
+            text-align: center;
+            color: #6f5349;
+            font-size: 18px;
+        }
+
+        .movie-card {
+            background: #fffaf5;
+            border-radius: 18px;
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            transition: transform 0.2s ease;
+        }
+
+        .movie-card-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .movie-card-link:hover .movie-card {
+            transform: translateY(-6px);
+        }
+
+        .movie-card img {
+            width: 100%;
+            display: block;
+            height: 280px;
+            object-fit: cover;
+        }
+
+        .movie-card .info {
+            padding: 16px;
+        }
+
+        .movie-card h3 {
+            margin: 0 0 10px;
+            font-size: 20px;
+        }
+
+        .movie-card p {
+            margin: 0 0 8px;
+            font-size: 14px;
+            color: #5a4036;
+        }
+
+        .movie-card .tag {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 5px 10px;
+            border-radius: 999px;
+            background: #d9b49b;
+            color: #3e2f2f;
+            font-size: 12px;
+        }
+
+        .no-results {
+            padding: 40px 20px;
+            text-align: center;
+            color: #6f5349;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h2>🎬爆肝影廳</h2>
+        <nav>
+          <a href="index.html">首頁</a>
+            <a href="環球影城.html">環球影城</a>
+            <a href="威秀影城.html">威秀影城</a>
+            <a href="秀泰影城.html">秀泰影城</a>
+            <a href="國賓影城.html">國賓影城</a>
+        </nav>
+    </header>
+
+    <section class="movie-grid" id="movieGrid">
+        <a href="威秀影城-detail.html?id=陽光女子合唱團" class="movie-card-link">
+            <article class="movie-card" data-title="陽光女子合唱團" data-genre="romance animation">
+                <img src="img/環球影城/陽光女子合唱團.jpg" alt="陽光女子合唱團">
+                <div class="info">
+                    <h3>陽光女子合唱團</h3>
+                    <p>上映日期：2025/12/31</p>
+                    <span class="tag">愛情 / 動畫</span>
+                </div>
+            </article>
+        </a>
+        <a href="威秀影城-detail.html?id=狸想世界(中)" class="movie-card-link">
+            <article class="movie-card" data-title="狸想世界(中)" data-genre="action mystery">
+                <img src="img/環球影城/狸想世界(中).jpg" alt="狸想世界(中)">
+                <div class="info">
+                    <h3>(國語版)狸想世界</h3>
+                    <p>上映日期：2026/3/18</p>
+                    <span class="tag">動作 / 懸疑</span>
+                </div>
+            </article>
+        </a>
+        <a href="威秀影城-detail.html?id=狸想世界(英)" class="movie-card-link">
+            <article class="movie-card" data-title="狸想世界(英)" data-genre="action mystery">
+                <img src="img/環球影城/狸想世界(英).jpg" alt="狸想世界(英)">
+                <div class="info">
+                    <h3>(英語版)狸想世界</h3>
+                    <p>上映日期：2026/3/18</p>
+                    <span class="tag">動作 / 懸疑</span>
+                </div>
+            </article>
+        </a>
+        <a href="威秀影城-detail.html?id=極限返航" class="movie-card-link">
+            <article class="movie-card" data-title="極限返航" data-genre="sci-fi drama">
+                <img src="img/環球影城/極限返航.jpg" alt="極限返航">
+                <div class="info">
+                    <h3>極限返航</h3>
+                    <p>上映日期：2026/3/18</p>
+                    <span class="tag">科幻 / 劇情</span>
+                </div>
+            </article>
+        </a>
+        <a href="威秀影城-detail.html?id=超級瑪利歐銀河電影版(中)" class="movie-card-link">
+            <article class="movie-card" data-title="超級瑪利歐銀河電影版(中)" data-genre="action adventure">
+                <img src="img/環球影城/超級瑪利歐銀河電影版(中).jpg" alt="超級瑪利歐銀河電影版(中)">
+                <div class="info">
+                    <h3>(國語版)超級瑪利歐銀河電影版</h3>
+                    <p>上映日期：2026/4/1</p>
+                    <span class="tag">動作 / 冒險</span>
+                </div>
+            </article>
+        </a>
+        <a href="威秀影城-detail.html?id=超級瑪利歐銀河電影版(英)" class="movie-card-link">
+            <article class="movie-card" data-title="超級瑪利歐銀河電影版(英)" data-genre="action adventure">
+                <img src="img/環球影城/超級瑪利歐銀河電影版(英).jpg" alt="超級瑪利歐銀河電影版(英)">
+                <div class="info">
+                    <h3>(英語版)超級瑪利歐銀河電影版</h3>
+                    <p>上映日期：2026/4/1</p>
+                    <span class="tag">動作 / 冒險</span>
+                </div>
+            </article>
+        </a>
+    </section>
+
+    <div class="no-results" id="noResults" style="display:none;">
+        找不到符合條件的電影。請調整搜尋關鍵字或類型。
+    </div>
+
+    <script>
+        const searchInput = document.getElementById('searchInput');
+        const genreSelect = document.getElementById('genreSelect');
+        const resetButton = document.getElementById('resetButton');
+        const movieGrid = document.getElementById('movieGrid');
+        const noResults = document.getElementById('noResults');
+        const cards = Array.from(document.querySelectorAll('.movie-card-link'));
+
+        function filterMovies() {
+            const keyword = searchInput.value.trim().toLowerCase();
+            const genre = genreSelect.value;
+            let visibleCount = 0;
+
+            cards.forEach(card => {
+                const article = card.querySelector('.movie-card');
+                const title = article.dataset.title.toLowerCase();
+                const genres = article.dataset.genre ? article.dataset.genre.toLowerCase() : '';
+                const matchesKeyword = keyword === '' || title.includes(keyword) || genres.includes(keyword);
+                const matchesGenre = genre === 'all' || genres.includes(genre);
+
+                if (matchesKeyword && matchesGenre) {
+                    card.style.display = '';
+                    visibleCount += 1;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+        }
+
+        searchInput.addEventListener('input', filterMovies);
+        genreSelect.addEventListener('change', filterMovies);
+        resetButton.addEventListener('click', () => {
+            searchInput.value = '';
+            genreSelect.value = 'all';
+            filterMovies();
+        });
+
+        filterMovies();
+    </script>
+</body>
+
+</html>

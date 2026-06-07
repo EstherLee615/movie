@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>電影詳細資訊 | 爆肝影廳</title>
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: "Segoe UI", sans-serif;
+            background: #f5efe6;
+            color: #3e2f2f;
+            padding-top: 88px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+            padding: 5px 24px;
+            background: rgba(62, 47, 47, 0.98);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            color: #fff;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 18px;
+        }
+
+        nav a {
+            color: #e6d5c3;
+            text-decoration: none;
+            white-space: nowrap;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: #d2a679;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin: 20px;
+            padding: 10px 20px;
+            background: #6f4e37;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+        }
+
+        .back-button:hover {
+            background: #5a3e2b;
+        }
+
+        .movie-detail {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .movie-poster {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .movie-info h1 {
+            margin: 0 0 20px;
+            font-size: 2.5em;
+            color: #2c1f1f;
+        }
+
+        .movie-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .meta-item {
+            background: #fffaf5;
+            padding: 12px 16px;
+            border-radius: 12px;
+            border-left: 4px solid #6f4e37;
+        }
+
+        .meta-item strong {
+            display: block;
+            font-size: 12px;
+            color: #6f4e37;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+
+        .meta-item span {
+            font-size: 16px;
+            color: #3e2f2f;
+        }
+
+        .movie-description {
+            background: #fffaf5;
+            padding: 30px;
+            border-radius: 16px;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .movie-description h2 {
+            margin: 0 0 20px;
+            color: #2c1f1f;
+            font-size: 1.5em;
+        }
+
+        .trailer-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background: #6f4e37;
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: background 0.3s ease;
+        }
+
+        .trailer-button:hover {
+            background: #5a3e2b;
+        }
+
+        .trailer-button.disabled {
+            background: #d7cfc6;
+            color: #7a6a60;
+            cursor: default;
+            pointer-events: none;
+        }
+
+        .booking-button {
+            background: #2b7a78;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        .booking-button:hover {
+            background: #225f5d;
+        }
+
+        .screening-info {
+            background: #fffaf5;
+            padding: 24px;
+            border-radius: 16px;
+            border-left: 4px solid #6f4e37;
+        }
+
+        .screening-info h3 {
+            margin: 0 0 16px;
+            color: #2c1f1f;
+            font-size: 1.2em;
+        }
+
+        .no-screening {
+            color: #a67c52;
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .movie-detail {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .movie-info h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h2>🎬 爆肝影廳</h2>
+        <nav>
+            <a href="index.html">首頁</a>
+            <a href="環球影城.html">環球影城</a>
+            <a href="威秀影城.html">威秀影城</a>
+            <a href="秀泰影城.html">秀泰影城</a>
+            <a href="國賓影城.html">國賓影城</a>
+        </nav>
+    </header>
+
+    <a href="環球影城.html" class="back-button">← 返回電影列表</a>
+
+    <main class="movie-detail" id="movieDetail">
+        <!-- 內容將由 JavaScript 動態生成 -->
+    </main>
+
+    <script>
+        // 各影城的官網連結
+        const cinemaUrls = {
+            "威秀影城": "https://www.vscinemas.com.tw/",
+            "秀泰影城": "https://www.showtimes.com.tw/",
+            "國賓影城": "https://www.ambassador.com.tw/",
+            "環球影城": "https://www.u-movie.com.tw/cinema/page.php?data_nav=507&page_type=series&vid=5136"
+        };
+
+        const movieData = {
+            "陽光女子合唱團": {
+                poster: "img/環球影城/陽光女子合唱團.jpg",
+                title: "陽光女子合唱團",
+                rating: "輔12級",
+                director: "林孝謙",
+                cast: "陳意涵、翁倩玉、鍾欣凌、孫淑媚、苗可麗、安心亞、陳庭妮",
+                duration: "2小時15分",
+                releaseDate: "2025/12/31",
+                genre: "愛情 / 動畫",
+                description: "《陽光女子合唱團》是一部充滿溫馨與感動的動畫電影，講述了一群熱愛音樂的女孩組成合唱團，追逐夢想的故事。她們在面對挑戰和困難時，展現了堅持與友誼的力量。這部電影不僅有動人的音樂，更傳達了勇敢追夢的重要訊息。故事描述在監獄裡的落難女子們，用歌聲傳遞愛和希望，在音樂中找到救贖與和解，展現女性各面向的溫暖。陳意涵此次最特別的挑戰是「唱歌」！雖然她曾因節目登上台北小巨蛋唱跳，但在《陽光女子合唱團》裡仍是截然不同的嘗試，她說：「比較難的是合唱團，因為是很多人一起合聲，所以有蠻多事前特別排練。」她也提到電影中的每一首歌曲都令她印象深刻，「歌曲總是很容易打動人，有的我現在一想起來就會想哭。」",
+                trailer: "https://www.youtube.com/watch?v=hmS5NQNcbj4"
+                // ticket:"https://www.vscinemas.com.tw/vsTicketing/ticketing/ticket.aspx"
+            },
+            "狸想世界(中)": {
+                poster: "img/環球影城/狸想世界(中).jpg",
+                title: "(國語版)狸想世界",
+                rating: "輔15級",
+                director: "導演名稱",
+                cast: "演員A, 演員B, 演員C",
+                duration: "135分鐘",
+                releaseDate: "2026/3/18",
+                genre: "動作 / 懸疑",
+                description: "在一個充滿神秘的狸想世界中，一位年輕的探險家發現了隱藏的秘密。隨著故事的展開，他面臨各種危險與謎團。這部電影結合了動作場面與懸疑元素，讓觀眾體驗緊張刺激的冒險旅程。",
+                trailer: "https://www.youtube.com/watch?v=example2"
+            },
+            "狸想世界(英)": {
+                poster: "img/環球影城/狸想世界(英).jpg",
+                title: "(英語版)狸想世界",
+                rating: "輔15級",
+                director: "導演名稱",
+                cast: "演員A, 演員B, 演員C",
+                duration: "135分鐘",
+                releaseDate: "2026/3/18",
+                genre: "動作 / 懸疑",
+                description: "在一個充滿神秘的狸想世界中，一位年輕的探險家發現了隱藏的秘密。隨著故事的展開，他面臨各種危險與謎團。這部電影結合了動作場面與懸疑元素，讓觀眾體驗緊張刺激的冒險旅程。",
+                trailer: "https://www.youtube.com/watch?v=example3"
+            },
+            "極限返航": {
+                poster: "img/環球影城/極限返航.jpg",
+                title: "極限返航",
+                rating: "輔12級",
+                director: "導演名稱",
+                cast: "演員A, 演員B, 演員C",
+                duration: "110分鐘",
+                releaseDate: "2026/3/18",
+                genre: "科幻 / 劇情",
+                description: "這是一部關於太空探險的科幻電影，一群宇航員在執行任務時遭遇意外。他們必須在極限環境中尋找返航的方法。這部電影探討了人類的堅韌與科技的極限。",
+                trailer: "https://www.youtube.com/watch?v=example4"
+            },
+            "超級瑪利歐銀河電影版(中)": {
+                poster: "img/環球影城/超級瑪利歐銀河電影版(中).jpg",
+                title: "(國語版)超級瑪利歐銀河電影版",
+                rating: "普遍級",
+                director: "導演名稱",
+                cast: "瑪利歐, 路易吉, 碧姬公主",
+                duration: "95分鐘",
+                releaseDate: "2026/4/1",
+                genre: "動作 / 冒險",
+                description: "經典遊戲角色瑪利歐來到大銀幕！在這個充滿奇幻的世界中，瑪利歐和他的夥伴們展開了精彩的冒險旅程。他們要拯救碧姬公主，擊敗邪惡的庫巴王。這部電影適合全家觀賞。",
+                trailer: "https://www.youtube.com/watch?v=example5"
+            },
+            "超級瑪利歐銀河電影版(英)": {
+                poster: "img/環球影城/超級瑪利歐銀河電影版(英).jpg",
+                title: "(英語版)超級瑪利歐銀河電影版",
+                rating: "普遍級",
+                director: "導演名稱",
+                cast: "瑪利歐, 路易吉, 碧姬公主",
+                duration: "95分鐘",
+                releaseDate: "2026/4/1",
+                genre: "動作 / 冒險",
+                description: "經典遊戲角色瑪利歐來到大銀幕！在這個充滿奇幻的世界中，瑪利歐和他的夥伴們展開了精彩的冒險旅程。他們要拯救碧姬公主，擊敗邪惡的庫巴王。這部電影適合全家觀賞。",
+                trailer: "https://www.youtube.com/watch?v=example6"
+            }
+        };
+
+        function getMovieIdFromUrl() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('id');
+        }
+
+        function displayMovieDetail(movieId) {
+            const movie = movieData[movieId];
+            const movieDetail = document.getElementById('movieDetail');
+
+            if (!movie) {
+                movieDetail.innerHTML = `
+                    <div class="not-found">
+                        <h1>找不到電影資訊</h1>
+                        <p>抱歉，我們找不到這部電影的詳細資訊。</p>
+                        <a href="環球movie.html" class="back-button">返回電影列表</a>
+                    </div>
+                `;
+                return;
+            }
+
+            movieDetail.innerHTML = `
+                <img src="${movie.poster}" alt="${movie.title} 海報" class="movie-poster">
+                <div class="movie-info">
+                    <h1>${movie.title}</h1>
+                    <div class="movie-meta">
+                        <div class="meta-item">
+                            <strong>分級</strong>
+                            <span>${movie.rating}</span>
+                        </div>
+                        <div class="meta-item">
+                            <strong>導演</strong>
+                            <span>${movie.director}</span>
+                        </div>
+                        <div class="meta-item">
+                            <strong>演員</strong>
+                            <span>${movie.cast}</span>
+                        </div>
+                        <div class="meta-item">
+                            <strong>片長</strong>
+                            <span>${movie.duration}</span>
+                        </div>
+                        <div class="meta-item">
+                            <strong>上映日期</strong>
+                            <span>${movie.releaseDate}</span>
+                        </div>
+                        <!-- <div class="meta-item">
+                            <strong>類型</strong>
+                            <span>${movie.genre}</span>
+                        </div> -->
+                    </div>
+                    <div class="movie-description">
+                        <h2>劇情簡介</h2>
+                        <p>${movie.description}</p>
+                    </div>
+                    <div style="display:flex;align-items:center;gap:12px;margin-top:12px;">
+                        <a href="${movie.trailer}" target="_blank" class="trailer-button">觀看預告片</a>
+                        <button id="bookButton" class="trailer-button booking-button">訂票</button>
+                    </div>
+                </div>
+            `;
+        }
+
+        const movieId = getMovieIdFromUrl();
+        const cinemaSelect = document.getElementById('cinemaSelect');
+        const screeningInfo = document.getElementById('screeningInfo');
+        const cinemaSection = document.getElementById('cinemaSection');
+
+        displayMovieDetail(movieId);
+
+        // 檢查影城當天是否還有放映
+        function hasScreeningToday(cinema) {
+            const currentTime = new Date();
+            const currentMinutes = currentTime.getHours() * 60 + currentTime.getMinutes();
+
+            if (!theaters) return false;
+
+            for (const times of Object.values(theaters)) {
+                for (const time of times) {
+                    if (time > currentMinutes) { // 只要有場次在當前時間之後
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        // 顯示訂票按鈕
+        function displayScreeningInfo(cinema) {
+            if (!cinema) {
+                screeningInfo.innerHTML = '<p class="no-screening">請選擇影城進行訂票</p>';
+                return;
+            }
+
+            const url = cinemaUrls[cinema];
+            const movieId = getMovieIdFromUrl();
+
+            // 特殊處理環球影城 - 如果是特定電影，跳轉到電影頁面
+            if (cinema === "環球影城" && (movieId === "陽光女子合唱團" || movieId === "狸想世界(中)" || movieId === "狸想世界(英)" || movieId === "極限返航" || movieId === "超級瑪利歐銀河電影版(中)" || movieId === "超級瑪利歐銀河電影版(英)")) {
+                const moviePageUrl = "https://www.u-movie.com.tw/cinema/page.php?ver=tw&page_type=movie&selProgram=1020&id=2147487891&portal=cinema#plot";
+                screeningInfo.innerHTML = `
+                    <h3>${cinema} 訂票</h3>
+                    <p>點擊下方按鈕前往 ${cinema} 官方網站訂票</p>
+                    <a href="${moviePageUrl}" target="_blank" class="trailer-button" style="display: inline-block; margin-top: 16px;">前往訂票</a>
+                `;
+            } else {
+                screeningInfo.innerHTML = `
+                    <h3>${cinema} 訂票</h3>
+                    <p>點擊下方按鈕前往 ${cinema} 官方網站訂票</p>
+                    <a href="${url}" target="_blank" class="trailer-button" style="display: inline-block; margin-top: 16px;">前往訂票</a>
+                `;
+            }
+        }
+
+        // 監聽影城選擇變化
+        cinemaSelect.addEventListener('change', (e) => {
+            displayScreeningInfo(e.target.value);
+        });
+
+        // 頁面加載後初始化影城選項
+        function showCinemaSection() {
+            cinemaSection.style.display = 'block';
+            initializeCinemaOptions();
+            displayScreeningInfo('');
+        }
+
+        showCinemaSection();
+
+        // 處理訂票按鈕行為：若已選影城則開啟該影城訂票頁，否則展開選影城區塊並聚焦選單
+        function attachBookButtonHandler() {
+            const bookBtn = document.getElementById('bookButton');
+            if (!bookBtn) return;
+            bookBtn.addEventListener('click', () => {
+                const selected = cinemaSelect.value;
+                const movieId = getMovieIdFromUrl();
+                if (selected) {
+                    if (selected === "環球影城" && (movieId === "陽光女子合唱團" || movieId === "狸想世界(中)" || movieId === "狸想世界(英)" || movieId === "極限返航" || movieId === "超級瑪利歐銀河電影版(中)" || movieId === "超級瑪利歐銀河電影版(英)")) {
+                        const moviePageUrl = "https://www.u-movie.com.tw/cinema/page.php?ver=tw&page_type=movie&selProgram=1020&id=2147487891&portal=cinema#plot";
+                        window.open(moviePageUrl, '_blank');
+                    } else {
+                        const url = cinemaUrls[selected];
+                        if (url) window.open(url, '_blank');
+                        else alert('找不到該影城的訂票連結');
+                    }
+                } else {
+                    cinemaSection.style.display = 'block';
+                    cinemaSelect.focus();
+                }
+            });
+        }
+
+        // 綁定訂票按鈕事件（若按鈕存在）
+        attachBookButtonHandler();
+    </script>
+</body>
+
+</html>
