@@ -174,6 +174,38 @@
             color: #6f5349;
             font-size: 18px;
         }
+
+        .movie-status-list {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+            display: flex;
+            justify-content: center; 
+            align-items: center;     
+            gap: 30px;
+        }
+
+        .movie-status-list li a {
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            color: #a18276;
+            transition: color 0.3s ease; 
+        }
+
+        .movie-status-list li a:hover {
+            color: #ff8800;
+        }
+
+        .content-title {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: #3d3130;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 
@@ -189,64 +221,160 @@
         </nav>
     </header>
 
+
+    <ul class="movie-status-list">
+        <li><a href="#on">熱映中</a></li>
+        <li><a href="#Comingsoon">即將上映</a></li>
+      </ul>
+
+
+    <h2 class="content-title" id="on">熱映中</h2>
     <section class="movie-grid" id="movieGrid">
-        <a href="威秀影城-detail.html?id=陽光女子合唱團" class="movie-card-link">
-            <article class="movie-card" data-title="陽光女子合唱團" data-genre="romance animation">
-                <img src="img/環球影城/陽光女子合唱團.jpg" alt="陽光女子合唱團">
+        <a href="威秀影城-detail.html?id=名偵探柯南" class="movie-card-link">
+            <article class="movie-card" data-title="名偵探柯南" data-genre="romance animation">
+                <img src="img/威秀影城/柯南.jpg" alt="名偵探柯南">
                 <div class="info">
-                    <h3>陽光女子合唱團</h3>
-                    <p>上映日期：2025/12/31</p>
-                    <span class="tag">愛情 / 動畫</span>
-                </div>
-            </article>
-        </a>
-        <a href="威秀影城-detail.html?id=狸想世界(中)" class="movie-card-link">
-            <article class="movie-card" data-title="狸想世界(中)" data-genre="action mystery">
-                <img src="img/環球影城/狸想世界(中).jpg" alt="狸想世界(中)">
-                <div class="info">
-                    <h3>(國語版)狸想世界</h3>
-                    <p>上映日期：2026/3/18</p>
-                    <span class="tag">動作 / 懸疑</span>
-                </div>
-            </article>
-        </a>
-        <a href="威秀影城-detail.html?id=狸想世界(英)" class="movie-card-link">
-            <article class="movie-card" data-title="狸想世界(英)" data-genre="action mystery">
-                <img src="img/環球影城/狸想世界(英).jpg" alt="狸想世界(英)">
-                <div class="info">
-                    <h3>(英語版)狸想世界</h3>
-                    <p>上映日期：2026/3/18</p>
-                    <span class="tag">動作 / 懸疑</span>
+                    <h3>名偵探柯南 引爆摩天樓 <br>4K數位修復版</h3>
+                    <p>上映日期：2026/5/8</p>
+                    <span class="tag">動畫</span>
                 </div>
             </article>
         </a>
         <a href="威秀影城-detail.html?id=極限返航" class="movie-card-link">
-            <article class="movie-card" data-title="極限返航" data-genre="sci-fi drama">
-                <img src="img/環球影城/極限返航.jpg" alt="極限返航">
+            <article class="movie-card" data-title="極限返航" data-genre="action mystery">
+                <img src="img/威秀影城/極限返航.jpg" alt="極限返航">
                 <div class="info">
                     <h3>極限返航</h3>
                     <p>上映日期：2026/3/18</p>
-                    <span class="tag">科幻 / 劇情</span>
+                    <span class="tag">奇幻/科幻</span>
+                    <span class="tag">劇情</span>
                 </div>
             </article>
         </a>
-        <a href="威秀影城-detail.html?id=超級瑪利歐銀河電影版(中)" class="movie-card-link">
-            <article class="movie-card" data-title="超級瑪利歐銀河電影版(中)" data-genre="action adventure">
-                <img src="img/環球影城/超級瑪利歐銀河電影版(中).jpg" alt="超級瑪利歐銀河電影版(中)">
+        <a href="威秀影城-detail.html?id=穿著PRADA的惡魔2" class="movie-card-link">
+            <article class="movie-card" data-title="穿著PRADA的惡魔2" data-genre="action mystery">
+                <img src="img/威秀影城/穿著PRADA的惡魔2.jpg" alt="穿著PRADA的惡魔2">
                 <div class="info">
-                    <h3>(國語版)超級瑪利歐銀河電影版</h3>
+                    <h3>穿著PRADA的惡魔2</h3>
+                    <p>上映日期：2026/4/29</p>
+                    <span class="tag">劇情</span>
+                </div>
+            </article>
+        </a>
+        <a href="威秀影城-detail.html?id=後室" class="movie-card-link">
+            <article class="movie-card" data-title="後室" data-genre="sci-fi drama">
+                <img src="img/威秀影城/後室.jpg" alt="後室">
+                <div class="info">
+                    <h3>後室</h3>
+                    <p>上映日期：2026/5/27</p>
+                    <span class="tag">恐怖</span>
+                </div>
+            </article>
+        </a>
+        <a href="威秀影城-detail.html?id=別離無恙" class="movie-card-link">
+            <article class="movie-card" data-title="別離無恙" data-genre="action adventure">
+                <img src="img/威秀影城/別離無恙.jpg" alt="別離無恙">
+                <div class="info">
+                    <h3>別離無恙</h3>
+                    <p>上映日期：2026/5/29</p>
+                    <span class="tag">劇情</span>
+                </div>
+            </article>
+        </a>
+        <a href="威秀影城-detail.html?id=花綠青綻放之時" class="movie-card-link">
+            <article class="movie-card" data-title="花綠青綻放之時" data-genre="action adventure">
+                <img src="img/威秀影城/花綠青綻放之時.jpg" alt="花綠青綻放之時">
+                <div class="info">
+                    <h3>花綠青綻放之時</h3>
                     <p>上映日期：2026/4/1</p>
                     <span class="tag">動作 / 冒險</span>
                 </div>
             </article>
         </a>
-        <a href="威秀影城-detail.html?id=超級瑪利歐銀河電影版(英)" class="movie-card-link">
-            <article class="movie-card" data-title="超級瑪利歐銀河電影版(英)" data-genre="action adventure">
-                <img src="img/環球影城/超級瑪利歐銀河電影版(英).jpg" alt="超級瑪利歐銀河電影版(英)">
+        <a href="威秀影城-detail.html?id=失樂園" class="movie-card-link">
+            <article class="movie-card" data-title="失樂園" data-genre="action adventure">
+                <img src="img/威秀影城/失樂園.jpg" alt="失樂園">
                 <div class="info">
-                    <h3>(英語版)超級瑪利歐銀河電影版</h3>
-                    <p>上映日期：2026/4/1</p>
-                    <span class="tag">動作 / 冒險</span>
+                    <h3>失樂園</h3>
+                    <p>上映日期：2026/5/29</p>
+                    <span class="tag">劇情</span>
+                </div>
+            </article>
+        </a>
+        <a href="威秀影城-detail.html?id=阿嘉莎的四季" class="movie-card-link">
+            <article class="movie-card" data-title="阿嘉莎的四季" data-genre="action adventure">
+                <img src="img/威秀影城/阿嘉莎的四季.jpg" alt="阿嘉莎的四季">
+                <div class="info">
+                    <h3>阿嘉莎的四季</h3>
+                    <p>上映日期：2026/6/12</p>
+                    <span class="tag">紀錄片</span>
+                </div>
+            </article>
+        </a>
+    </section>
+
+    <h2 class="content-title" id="Comingsoon">即將上映</h2>
+    <section class="movie-grid" id="movieGrid">
+        <a href="威秀影城-detail.html?id=鬼上車" class="movie-card-link">
+            <article class="movie-card" data-title="鬼上車" data-genre="action adventure">
+                <img src="img/威秀影城/鬼上車.jpg" alt="鬼上車">
+                <div class="info">
+                    <h3>鬼上車</h3>
+                    <p>上映日期：2026/6/18</p>
+                    <span class="tag">驚悚</span>
+                </div>
+            </article>
+        </a>
+        <a href="威秀影城-detail.html?id=海洋奇緣" class="movie-card-link">
+            <article class="movie-card" data-title="海洋奇緣" data-genre="action adventure">
+                <img src="img/威秀影城/海洋奇緣.jpg" alt="海洋奇緣">
+                <div class="info">
+                    <h3>海洋奇緣</h3>
+                    <p>上映日期：2026/7/8</p>
+                    <span class="tag">奇幻/科幻</span>
+                    <span class="tag">冒險</span>
+                </div>
+            </article>
+        </a>
+        <a href="威秀影城-detail.html?id=奧德賽" class="movie-card-link">
+            <article class="movie-card" data-title="奧德賽" data-genre="action adventure">
+                <img src="img/威秀影城/奧德賽.jpg" alt="奧德賽">
+                <div class="info">
+                    <h3>奧德賽</h3>
+                    <p>上映日期：2026/7/17</p>
+                    <span class="tag">奇幻/科幻</span>
+                    <span class="tag">傳記</span>
+                    <span class="tag">劇情</span>
+                </div>
+            </article>
+        </a>
+        <a href="威秀影城-detail.html?id=汪汪隊立大功：恐龍大電影" class="movie-card-link">
+            <article class="movie-card" data-title="汪汪隊立大功：恐龍大電影" data-genre="action adventure">
+                <img src="img/威秀影城/汪汪隊立大功：恐龍大電影.jpg" alt="汪汪隊立大功：恐龍大電影">
+                <div class="info">
+                    <h3>汪汪隊立大功：恐龍大電影</h3>
+                    <p>上映日期：2026/8/14</p>
+                    <span class="tag">動畫</span>
+                </div>
+            </article>
+        </a>
+        <a href="威秀影城-detail.html?id=快打旋風" class="movie-card-link">
+            <article class="movie-card" data-title="快打旋風" data-genre="action adventure">
+                <img src="img/威秀影城/快打旋風.jpg" alt="快打旋風">
+                <div class="info">
+                    <h3>快打旋風</h3>
+                    <p>上映日期：2026/10/16</p>
+                    <span class="tag">動作</span>
+                </div>
+            </article>
+        </a>
+        <a href="威秀影城-detail.html?id=門當父不對之親家駕到" class="movie-card-link">
+            <article class="movie-card" data-title="門當父不對之親家駕到" data-genre="action adventure">
+                <img src="img/威秀影城/門當父不對之親家駕到.jpg" alt="門當父不對之親家駕到">
+                <div class="info">
+                    <h3>門當父不對之親家駕到</h3>
+                    <p>上映日期：2026/11/27</p>
+                    <span class="tag">喜劇</span>
                 </div>
             </article>
         </a>
